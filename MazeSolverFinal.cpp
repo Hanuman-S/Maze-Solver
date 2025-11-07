@@ -3,10 +3,6 @@ using namespace std;
 using namespace std::chrono;
 // ANSI color codes
 #define RESET   "\033[0m"
-#define RED     "\033[31m"
-#define BLUE    "\033[34m"
-#define WHITE   "\033[37m"
-#define BLACK   "\033[30m"
 #define BWHITE  "\033[47m"  // White background
 #define BBLACK  "\033[40m"  // Black background
 #define BBLUE   "\033[44m"  // Blue background
@@ -73,7 +69,6 @@ void printPathAndMark(vector<vector<Cell>>& parent, Cell goal, vector<vector<int
 
 //////////////////// BFS ////////////////////
 void BFS(vector<vector<int>> maze, Cell start, Cell goal) {
-    auto begin = high_resolution_clock::now();
 
     int n=maze.size(), m=maze[0].size();
     vector<vector<bool>> visited(n, vector<bool>(m,false));
@@ -124,7 +119,6 @@ bool DFSRec(int x,int y,Cell goal, vector<vector<int>>& maze, vector<vector<bool
 }
 
 void DFS(vector<vector<int>> maze, Cell start, Cell goal){
-    auto begin = high_resolution_clock::now();
 
     int n=maze.size(),m=maze[0].size();
     vector<vector<bool>> visited(n, vector<bool>(m,false));
@@ -143,7 +137,6 @@ struct NodeD { int x,y,d; };
 struct CompareD { bool operator()(NodeD const&a, NodeD const&b){ return a.d>b.d; } };
 
 void Dijkstra(vector<vector<int>> maze, Cell start, Cell goal){
-    auto begin = high_resolution_clock::now();
 
     int n=maze.size(),m=maze[0].size();
     vector<vector<bool>> visited(n, vector<bool>(m,false));
@@ -189,7 +182,6 @@ struct CompareA { bool operator()(NodeA const&a, NodeA const&b){ return a.f>b.f;
 int heuristic(Cell a, Cell b){ return abs(a.x-b.x)+abs(a.y-b.y); }
 
 void Astar(vector<vector<int>> maze, Cell start, Cell goal){
-    auto begin = high_resolution_clock::now();
 
     int n=maze.size(),m=maze[0].size();
     vector<vector<bool>> visited(n, vector<bool>(m,false));
